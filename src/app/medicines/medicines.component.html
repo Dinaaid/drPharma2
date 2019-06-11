@@ -1,0 +1,65 @@
+<app-search></app-search>
+
+
+<div class="container">
+  <div id="mainX" class="card card-body">
+    <span *ngIf="authService.admin">
+    <h3 class="titleX">Add New Medicine</h3>
+    <div class="d-flex justify-content-between mb-3">
+      <input #newMember [(ngModel)]="app.newMedicineX"
+        (keyup.enter)="app.addMember(newMember.value, newDesc.value, newQuantity.value)" type="text"
+        class="col-md-4 form-control" id="newMemberX" placeholder="Medicine Title">
+      <input #newDesc [(ngModel)]="app.newMedicineDesc"
+        (keyup.enter)="app.addMember(newMember.value, newDesc.value, newQuantity.value)" type="text"
+        class="col-md-2 form-control" id="newMedicineDesc" placeholder="Medicine price">
+      <input #newQuantity [(ngModel)]="app.newMedicineQuantity"
+        (keyup.enter)="app.addMember(newMember.value, newDesc.value, newQuantity.value)" type="text"
+        class="col-md-1 form-control" id="newQuantity" placeholder="Quantity">
+      <button class="col-sm-2 btn btn-dark"
+        (click)="app.addMember(newMember.value, newDesc.value, newQuantity.value)">Add Medicine</button>
+    </div>
+    </span>
+
+    <div class="container">
+      <div class="row">
+        <h1>list medicine</h1>
+      </div>
+      <div class="row">
+        <div class="card col-lg-3 col-md-6" *ngFor="let medicine of app.medicines$ | async; let i = index">
+          <div class="card-body text-center">
+            <!-- <div class="imgx"></div> -->
+            <img class="img-thumbnail" src="../../assets/undraw_file_searching_duff.png" alt="Thumbnail image">
+
+
+            <span *ngIf="(app.editId == i) && app.editMedicineX; then showEdit else showMsg"></span>
+            <ng-template #showMsg>
+              <h4>{{ medicine.text }}</h4>
+              <p class="card-text">{{ medicine.desc }}</p>
+              <p class="card-text">{{ medicine.quantity }}</p>
+            </ng-template>
+            <ng-template #showEdit>
+              <input #updateText (keyup.enter)="app.updateMember(medicine.key, updateText.value, updateDesc.value)"
+                (keyup.esc)="editMedicineX = false" type="text" class="form-control d-inline col-7"
+                value="{{ medicine.text }}">
+              <input #updateDesc (keyup.enter)="app.updateMember(medicine.key, updateText.value, updateDesc.value)"
+                (keyup.esc)="editMedicineX = false" type="text" class="form-control d-inline col-7"
+                value="{{ medicine.desc }}">
+            </ng-template>
+
+            <span *ngIf="authService.admin">
+              <button class="editX btn btn-danger btn-sm mr-2" (click)="editMember(i)">Edit</button>
+              <button class="deleteX btn btn-danger btn-sm" (click)="app.deleteMember(medicine.key)">X</button>
+            </span>
+            <span *ngIf="!authService.admin">
+              <button class="deleteX btn btn-success btn-sm"  (click)="app.addToCart(medicine)">Add to Cart</button>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add to Cart page -->
+       
+    </div>
+</div>
+

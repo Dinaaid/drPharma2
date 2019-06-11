@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row">
+      <div class="card col-lg-3 col-md-6" *ngFor="let cart of app.cart$ | async; let i = index">
+        <div class="card-body text-center">
+          <div class="imgx"></div>
+
+          <span *ngIf="(app.editId == i) && app.editMedicineX; then showEdit else showMsg"></span>
+          <ng-template #showMsg>
+            <h4>{{ cart.text }}</h4>
+            <p class="card-text">{{ cart.desc }}</p>
+            <p class="card-text">{{ cart.quantity }}</p>
+          </ng-template>
+          <ng-template #showEdit>
+            <input #updateText (keyup.enter)="app.updateMember(cart.key, updateText.value, updateDesc.value)"
+              (keyup.esc)="editMedicineX = false" type="text" class="form-control d-inline col-7"
+              value="{{ cart.text }}">
+            <input #updateDesc (keyup.enter)="app.updateMember(cart.key, updateText.value, updateDesc.value)"
+              (keyup.esc)="editMedicineX = false" type="text" class="form-control d-inline col-7"
+              value="{{ cart.desc }}">
+          </ng-template>
+
+          <span *ngIf="authService.admin">
+            <!-- <button class="editX btn btn-danger btn-sm mr-2" (click)="editMember(i)">Edit</button> -->
+            <button class="deleteX btn btn-danger btn-sm" (click)="app.deleteMember(cart.key)"> Delete </button>
+          </span>
+          <span *ngIf="!authService.admin">
+            <button class="deleteX btn btn-success btn-sm" (click)="app.deleteMember(cart.key)"> Delete from Cart </button>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+

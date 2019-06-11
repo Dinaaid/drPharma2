@@ -1,0 +1,10 @@
+<div>
+  <article class="row justify-content-center flex-row-reverse" >
+    <h1 class="col-sm-12 text-center"> !ابحث عن الدواء</h1>
+    <input #filterX [(ngModel)]="authService.filterX" (keyup)="app.filterGlobal(filterX.value)" type="text" class="col-sm-8 col-md-5 text-left" id="filterX" autofocus
+      placeholder=".....ادخل اسم الدواء">
+    <input class="search col-sm-3 col-md-2" (click)="app.searchGlobal(filterX)" type="submit" value="بحث">
+  </article>
+</div>
+
+<!-- <p>*ngIf="authService.showX"</p> -->

@@ -1,0 +1,66 @@
+<header class="container-fluid">
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand d-flex" routerLink="">
+      <img src="assets/logonav.png" alt="logo-pharmacy">
+      <h2>Pharmacy</h2>
+    </a>
+    <button class="navbar-toggler justify-" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class=" nav nav-fill navbar-nav mr-auto">
+        <li class="nav-item ">
+          <a class="nav-link" routerLink="">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="pharmacyService.triggerScrollTo()">Our Services</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+              Medicines</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" (click)="authService.goToMedicines()"> Available </a>
+              <a class="dropdown-item" routerLink="unavailable"> Unavailable </a>
+            </div>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" (click)="authService.goToMedicines()">All medicines</a>
+        </li> -->
+        <li class="nav-item">
+          <a class="nav-link" routerLink="contactus">Contact Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="shopping">Shopping
+            <img src="assets/shopping-cart.png" alt="icon-cart">
+          </a>
+        </li>
+        <li class="nav-items d-flex justify-content-center">
+          <span *ngIf="!authService.authState; then showSignIn else showSignOut"></span>
+          <ng-template #showSignIn>
+              <a class="nav-link" (click)="authService.goToSignIn()">Sign In</a>
+          </ng-template>
+          <ng-template #showSignOut>
+              <a class="nav-link" (click)="authService.signOut()">Sign Out</a>
+          </ng-template>
+        </li>
+      </ul>
+      <li class="nav-item  d-flex justify-content-end">
+          <a class="nav-link" href="#">Ar</a>
+      </li>
+      <li class="nav-item  d-flex justify-content-end">
+          <a class="nav-link" href="index.html">En</a>
+      </li>
+
+    </div>
+  </nav>
+  <!-- <div>
+    <article class="row justify-content-center" *ngIf="authService.showX" >
+      <h1 class="col-sm-12 text-center">Find A Medicine!</h1>
+      <input #filterX [(ngModel)]="authService.filterX" (keyup)="app.filterGlobal(filterX.value)" type="text" class="col-sm-8 col-md-5" id="filterX" autofocus
+        placeholder="enter name medicine...">
+      <input class="search col-sm-3 col-md-2" (click)="app.searchGlobal(filterX)" type="submit" value="search">
+    </article>
+  </div> -->
+</header>

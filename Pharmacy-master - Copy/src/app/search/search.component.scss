@@ -1,0 +1,25 @@
+div {
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    height: 50vh;
+    padding-bottom: 3   0px;
+    background-image: url('../../assets/hero_home_bg_1.svg');
+    background-position: bottom;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    margin-top: 30px;
+}
+
+article {
+  width: 100%;
+}
+
+article input {
+    border: none;
+    font-size: large;
+    padding: 15px;
+    margin: 0px;
+    width: 200px;
+    border-radius: 10px;
+  }
