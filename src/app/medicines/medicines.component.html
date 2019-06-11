@@ -3,7 +3,7 @@
 
 <div class="container">
   <div id="mainX" class="card card-body">
-    <span *ngIf="authService.admin">
+    <!-- <span *ngIf="authService.admin"> -->
     <h3 class="titleX">Add New Medicine</h3>
     <div class="d-flex justify-content-between mb-3">
       <input #newMember [(ngModel)]="app.newMedicineX"
@@ -15,10 +15,14 @@
       <input #newQuantity [(ngModel)]="app.newMedicineQuantity"
         (keyup.enter)="app.addMember(newMember.value, newDesc.value, newQuantity.value)" type="text"
         class="col-md-1 form-control" id="newQuantity" placeholder="Quantity">
-      <button class="col-sm-2 btn btn-dark"
-        (click)="app.addMember(newMember.value, newDesc.value, newQuantity.value)">Add Medicine</button>
+
+      <input #newImageFIle
+        (change)="app.uploadFile($event, '/medicines')" type="file"
+        class="col-md-1 form-control" id="newImageFIle" placeholder="Upload Image">
+      <button class="col-sm-2 btn btn-dark" [disabled]="!app.isUpload"
+        (click)="app.addMember(newMember.value, newDesc.value, newQuantity.value, app.newMedicineImageFIle)">Add Medicine</button>
     </div>
-    </span>
+    <!-- </span> -->
 
     <div class="container">
       <div class="row">
@@ -28,7 +32,7 @@
         <div class="card col-lg-3 col-md-6" *ngFor="let medicine of app.medicines$ | async; let i = index">
           <div class="card-body text-center">
             <!-- <div class="imgx"></div> -->
-            <img class="img-thumbnail" src="../../assets/undraw_file_searching_duff.png" alt="Thumbnail image">
+            <img class="img-thumbnail" [src]="medicine.imageUrl" alt="Thumbnail image">
 
 
             <span *ngIf="(app.editId == i) && app.editMedicineX; then showEdit else showMsg"></span>

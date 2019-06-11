@@ -6,6 +6,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 
 import { AngularFireModule } from "@angular/fire";
+import { AngularFireStorageModule } from "@angular/fire/storage";
 import { AngularFireDatabaseModule } from "@angular/fire/database";
 import { AngularFireAuthModule } from "@angular/fire/auth";
 
@@ -24,13 +25,23 @@ import { ShoppingComponent } from './shopping/shopping.component';
 import { UnavailableComponent } from './unavailable/unavailable.component';
 import { InformationComponent } from './information/information.component';
 
+// export const firebaseConfig = {
+//   apiKey: "AIzaSyDAUT1VrYuEpw7ZqLhDMp4lBXXX1j_NYYo",
+//   authDomain: "angularfire2-8ae47.firebaseapp.com",
+//   databaseURL: "https://angularfire2-8ae47.firebaseio.com",
+//   projectId: "angularfire2-8ae47",
+//   storageBucket: "angularfire2-8ae47.appspot.com",
+//   messagingSenderId: "711574640048"
+// }
+
 export const firebaseConfig = {
-  apiKey: "AIzaSyDAUT1VrYuEpw7ZqLhDMp4lBXXX1j_NYYo",
-  authDomain: "angularfire2-8ae47.firebaseapp.com",
-  databaseURL: "https://angularfire2-8ae47.firebaseio.com",
-  projectId: "angularfire2-8ae47",
-  storageBucket: "angularfire2-8ae47.appspot.com",
-  messagingSenderId: "711574640048"
+  apiKey: "AIzaSyBdlBNMD013feSxJShOYxIYI9gdZBr5nhw",
+  authDomain: "pharmacydinax.firebaseapp.com",
+  databaseURL: "https://pharmacydinax.firebaseio.com",
+  projectId: "pharmacydinax",
+  storageBucket: "pharmacydinax.appspot.com",
+  messagingSenderId: "847108860094",
+  appId: "1:847108860094:web:372cf199b9d3c3ff"
 }
 
 @NgModule({
@@ -55,7 +66,8 @@ export const firebaseConfig = {
     ScrollToModule.forRoot(),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFireStorageModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
