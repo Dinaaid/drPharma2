@@ -82,8 +82,7 @@ export class AppComponent {
     const task = this.storage.upload(`${filePath}/${file.name}`, file).then(resp => {
       this.storage.ref(resp.metadata.fullPath).getDownloadURL().subscribe(
         url => {
-          this.newMedicineImageFIle = url;
-          this.isUpload = true;
+          this.newMedicineImageFIle = url;this.isUpload = true;
         }
       )
       

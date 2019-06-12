@@ -1,28 +1,28 @@
 <app-search></app-search>
 
 
-<div class="container">
+<div class="container d-flex flex-wrap justify-content-around">
   <div id="mainX" class="card card-body">
-    <!-- <span *ngIf="authService.admin"> -->
+    <span *ngIf="authService.admin">
     <h3 class="titleX">Add New Medicine</h3>
     <div class="d-flex justify-content-between mb-3">
       <input #newMember [(ngModel)]="app.newMedicineX"
         (keyup.enter)="app.addMember(newMember.value, newDesc.value, newQuantity.value)" type="text"
-        class="col-md-4 form-control" id="newMemberX" placeholder="Medicine Title">
+        class="col-md-3 form-control" id="newMemberX" placeholder="Medicine Title">
       <input #newDesc [(ngModel)]="app.newMedicineDesc"
         (keyup.enter)="app.addMember(newMember.value, newDesc.value, newQuantity.value)" type="text"
-        class="col-md-2 form-control" id="newMedicineDesc" placeholder="Medicine price">
+        class="col-md-1 form-control" id="newMedicineDesc" placeholder="Price">
       <input #newQuantity [(ngModel)]="app.newMedicineQuantity"
         (keyup.enter)="app.addMember(newMember.value, newDesc.value, newQuantity.value)" type="text"
         class="col-md-1 form-control" id="newQuantity" placeholder="Quantity">
 
       <input #newImageFIle
         (change)="app.uploadFile($event, '/medicines')" type="file"
-        class="col-md-1 form-control" id="newImageFIle" placeholder="Upload Image">
-      <button class="col-sm-2 btn btn-dark" [disabled]="!app.isUpload"
+        class="col-md-3 align-self-center" id="newImageFIle" placeholder="Upload Image">
+      <button class="col-sm-2 btn btn-dark " [disabled]="!app.isUpload"
         (click)="app.addMember(newMember.value, newDesc.value, newQuantity.value, app.newMedicineImageFIle)">Add Medicine</button>
     </div>
-    <!-- </span> -->
+    </span>
 
     <div class="container">
       <div class="row">
@@ -61,8 +61,6 @@
         </div>
       </div>
     </div>
-
-    <!-- Add to Cart page -->
        
     </div>
 </div>

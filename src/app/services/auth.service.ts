@@ -44,7 +44,7 @@ export class AuthService {
       .then(user => {
         this.authState = user;
         console.log(user.user.uid);
-        if(user.user.uid == 'F4R5EpDvf4NFqXOiwQg6MYskiW33') {
+        if(user.user.uid == 'tFgM2ZBjHIf8iW7maR6K3XcPzzZ2') {
           this.admin = true;
         } else {
           this.admin = false;
