@@ -8,11 +8,13 @@ import { ContactUsComponent  } from './contact-us/contact-us.component';
 import { ShoppingComponent } from './shopping/shopping.component';
 import { UnavailableComponent } from './unavailable/unavailable.component';
 import { InformationComponent } from './information/information.component';
+import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'services', component: ServicesComponent },
   { path: 'signIn', component: SigninComponent },
+  { path: 'signUp', component: SignupComponent },
   { path: 'medicines', component: MedicinesComponent },
   { path: 'contactus', component: ContactUsComponent },
   { path: 'shopping', component: ShoppingComponent },

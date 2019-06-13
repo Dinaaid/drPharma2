@@ -27,6 +27,7 @@ import { InformationComponent } from './information/information.component';
 
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { SignupComponent } from './signup/signup.component';
 
 
 
@@ -54,31 +55,31 @@ export function createTranslateLoader(http: HttpClient) {
 }
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    MedicinesComponent,
-    ServicesComponent,
-    HomeComponent,
-    HeaderComponent,
-    SigninComponent,
-    ContactUsComponent,
-    SearchComponent,
-    ShoppingComponent,
-    UnavailableComponent,
-    InformationComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule,
-    ScrollToModule.forRoot(),
-    AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireDatabaseModule,
-    AngularFireAuthModule,
-    AngularFireStorageModule,
-    TranslateModule.forRoot(
-      {
+   declarations: [
+      AppComponent,
+      MedicinesComponent,
+      ServicesComponent,
+      HomeComponent,
+      HeaderComponent,
+      SigninComponent,
+      ContactUsComponent,
+      SearchComponent,
+      ShoppingComponent,
+      UnavailableComponent,
+      InformationComponent,
+      SignupComponent
+   ],
+   imports: [
+      BrowserModule,
+      AppRoutingModule,
+      FormsModule,
+      HttpClientModule,
+      ScrollToModule.forRoot(),
+      AngularFireModule.initializeApp(firebaseConfig),
+      AngularFireDatabaseModule,
+      AngularFireAuthModule,
+      AngularFireStorageModule,
+      TranslateModule.forRoot({
         loader: {
             provide: TranslateLoader,
             useFactory: (createTranslateLoader),
@@ -86,8 +87,12 @@ export function createTranslateLoader(http: HttpClient) {
         }
     }
     )
-  ],
-  providers: [AuthService],
-  bootstrap: [AppComponent]
+   ],
+   providers: [
+      AuthService
+   ],
+   bootstrap: [
+      AppComponent
+   ]
 })
 export class AppModule { }
