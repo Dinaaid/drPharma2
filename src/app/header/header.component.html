@@ -12,10 +12,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class=" nav nav-fill navbar-nav mr-auto">
         <li class="nav-item ">
-          <a class="nav-link" routerLink="">Home</a>
+          <a class="nav-link" routerLink="">{{ 'nav.home' | translate }}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" (click)="pharmacyService.triggerScrollTo()">Our Services</a>
+          <a class="nav-link" (click)="pharmacyService.triggerScrollTo()">{{ 'nav.Our Services' | translate}}</a>
         </li>
         <!-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">

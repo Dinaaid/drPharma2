@@ -1,3 +1,7 @@
 {
-  "title": "any name here"
+  "title": "any name here",
+  "nav": {
+    "home": "Home",
+    "Our Services": "Our Services"
+  }
 }
