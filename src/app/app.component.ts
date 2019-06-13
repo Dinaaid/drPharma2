@@ -4,7 +4,8 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { AuthService } from "./services/auth.service";
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -30,10 +31,13 @@ export class AppComponent {
     public authService: AuthService,
     public db: AngularFireDatabase,
     private storage: AngularFireStorage,
-    private router: Router) {
+    private router: Router,
+    private translate: TranslateService
+    ) {
     this.medicineRef = db.list('/medicines');
     this.cartRef = db.list('/cart');
     this.loadMembers(false);
+    translate.setDefaultLang('en');
   }
 
   // private basePath:string = '/medicines';
@@ -85,7 +89,7 @@ export class AppComponent {
           this.newMedicineImageFIle = url;this.isUpload = true;
         }
       )
-      
+
     })
   }
 
@@ -102,7 +106,7 @@ export class AppComponent {
     this.newMedicineQuantity = 0;
   }
 
-  
+
 
   addToCart(medicine: object) {
     this.cartRef.push(medicine);
@@ -124,17 +128,30 @@ export class AppComponent {
     this.editMedicineX = false;
   }
 
-  deleteMember(key: string) {
-    if (confirm('R u sure u wanna delete this?!'))
-      this.medicineRef.remove(key),
-      this.cartRef.remove(key);
+  deleteMember(key: string, from?: string) {
+    if (confirm('R u sure u wanna delete this?!')) {
+      from === 'cart' ? (
+        // this.db.object('cart').snapshotChanges().pipe(take(1)).subscribe(
+        //   c => {
+        //     const carts = c.payload.val();
+        //     for (const ca in carts) {
+        //       (carts[ca].key === '-Lh55prmrb3VSVTeo3AC') ? (console.log('ef')) : console.log('ff')
+        //       // console.log(carts[ca])
+        //     }
+        //   }
+        // )
+
+        console.log(key),
+        this.cartRef.remove(key)
+      ) : (this.medicineRef.remove(key), console.log(key))
+    }
   }
 
   loadMembers(filterX) {
     // Use snapshotChanges().map() to store the key
     this.medicines$ = this.medicineRef.snapshotChanges().pipe(
       map(changes => {
-        //filter Members X-Team 
+        //filter Members X-Team
         changes = (filterX) ?
           changes.filter(changes => changes.payload.val().text.toLowerCase().includes(filterX.toLowerCase())) :
           changes;
@@ -149,7 +166,7 @@ export class AppComponent {
     this.cart$ = this.cartRef.snapshotChanges().pipe(
       map(changes => {
         // key and value X-Team
-        return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
+        return changes.map(c => ({ id: c.payload.key, ...c.payload.val() }));
       })
     );
   }

@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from "@angular/forms";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HttpClient } from "@angular/common/http";
 
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 
@@ -25,6 +25,11 @@ import { ShoppingComponent } from './shopping/shopping.component';
 import { UnavailableComponent } from './unavailable/unavailable.component';
 import { InformationComponent } from './information/information.component';
 
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+
+
+
 // export const firebaseConfig = {
 //   apiKey: "AIzaSyDAUT1VrYuEpw7ZqLhDMp4lBXXX1j_NYYo",
 //   authDomain: "angularfire2-8ae47.firebaseapp.com",
@@ -42,6 +47,10 @@ export const firebaseConfig = {
   storageBucket: "pharmacydinax.appspot.com",
   messagingSenderId: "847108860094",
   appId: "1:847108860094:web:372cf199b9d3c3ff"
+}
+
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
 @NgModule({
@@ -67,7 +76,16 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    TranslateModule.forRoot(
+      {
+        loader: {
+            provide: TranslateLoader,
+            useFactory: (createTranslateLoader),
+            deps: [HttpClient]
+        }
+    }
+    )
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

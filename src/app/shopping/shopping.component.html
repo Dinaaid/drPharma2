@@ -1,10 +1,10 @@
-<!-- <span *ngIf="authService.admin"> -->
-  
+<!-- <span *ngIf="authService.admin">
+
     <h3> full Name </h3>
     <h3> Phone Number </h3>
     <h3> Address </h3>
-    
-    <!-- </span> -->
+
+    </span> -->
 
 <div class="container">
     <div class="row">
@@ -20,20 +20,20 @@
             <p class="card-text">{{ cart.quantity }}</p>
           </ng-template>
           <ng-template #showEdit>
-            <input #updateText (keyup.enter)="app.updateMember(cart.key, updateText.value, updateDesc.value)"
+            <input #updateText (keyup.enter)="app.updateMember(cart.id, updateText.value, updateDesc.value)"
               (keyup.esc)="editMedicineX = false" type="text" class="form-control d-inline col-7"
               value="{{ cart.text }}">
-            <input #updateDesc (keyup.enter)="app.updateMember(cart.key, updateText.value, updateDesc.value)"
+            <input #updateDesc (keyup.enter)="app.updateMember(cart.id, updateText.value, updateDesc.value)"
               (keyup.esc)="editMedicineX = false" type="text" class="form-control d-inline col-7"
               value="{{ cart.desc }}">
           </ng-template>
 
           <span *ngIf="authService.admin">
             <!-- <button class="editX btn btn-danger btn-sm mr-2" (click)="editMember(i)">Edit</button> -->
-            <button class="deleteX btn btn-danger btn-sm" (click)="app.deleteMember(cart.key)"> Delete </button>
+            <button class="deleteX btn btn-danger btn-sm" (click)="app.deleteMember(cart.id, 'cart')"> Delete </button>
           </span>
           <span *ngIf="!authService.admin">
-            <button class="deleteX btn btn-success btn-sm" (click)="app.deleteMember(cart.key)"> Delete from Cart </button>
+            <button class="deleteX btn btn-success btn-sm" (click)="app.deleteMember(cart.id, 'cart')"> Delete from Cart </button>
           </span>
         </div>
       </div>

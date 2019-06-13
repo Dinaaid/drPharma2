@@ -17,17 +17,17 @@
         <li class="nav-item">
           <a class="nav-link" (click)="pharmacyService.triggerScrollTo()">Our Services</a>
         </li>
-        <li class="nav-item dropdown">
+        <!-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
               Medicines</a>
             <div class="dropdown-menu">
               <a class="dropdown-item" (click)="authService.goToMedicines()"> Available </a>
               <a class="dropdown-item" routerLink="unavailable"> Unavailable </a>
             </div>
-        </li>
-        <!-- <li class="nav-item">
-          <a class="nav-link" (click)="authService.goToMedicines()">All medicines</a>
         </li> -->
+        <li class="nav-item">
+          <a class="nav-link" (click)="authService.goToMedicines()">All medicines</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="contactus">Contact Us</a>
         </li>
@@ -47,10 +47,10 @@
         </li>
       </ul>
       <li class="nav-item  d-flex justify-content-end">
-          <a class="nav-link" href="#">Ar</a>
+          <a class="nav-link" (click)="switchLanguage('ar')">Ar</a>
       </li>
       <li class="nav-item  d-flex justify-content-end">
-          <a class="nav-link" href="index.html">En</a>
+          <a class="nav-link" (click)="switchLanguage('en')">En</a>
       </li>
 
     </div>
