@@ -36,7 +36,7 @@ export class AppComponent {
     private translate: TranslateService
   ) {
     this.medicineRef = db.list('/medicines');
-    this.cartRef = db.list('/cart');
+    this.cartRef = db.list(`carts/${this.authService.userId}`);
     this.userRef = db.list('/users');
     this.loadMembers(false);
     translate.setDefaultLang('en');

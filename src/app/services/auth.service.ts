@@ -15,7 +15,9 @@ export class AuthService {
   showX: boolean = true;
   authState: any = null;
   user: User;
-  userId: string = '';
+  userId: string = localStorage.getItem('userId')
+    ? localStorage.getItem('userId')
+    : '';
 
   constructor(public afAuth: AngularFireAuth, public router: Router) {
     this.afAuth.authState.subscribe(user => {
