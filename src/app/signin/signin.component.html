@@ -1,4 +1,3 @@
-
 <div class="container">
   <div class="row">
     <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
@@ -7,57 +6,74 @@
           <h5 class="card-title text-center">Sign In</h5>
           <form class="form-signin" (ngSubmit)="onSignUp()">
             <div class="form-label-group">
-              <input 
+              <input
                 #emailX
-                type="email" 
-                id="email" 
-                name="email" 
-                class="form-control" 
-                placeholder="Email address" 
-                required autofocus
-                [(ngModel)]="email">
+                type="email"
+                id="email"
+                name="email"
+                class="form-control"
+                placeholder="Email address"
+                required
+                autofocus
+                [(ngModel)]="email"
+              />
             </div>
 
             <div class="form-label-group">
-              <input 
+              <input
                 #passwordX
-                type="password" 
-                id="password" 
-                name="password" 
-                class="form-control" 
-                placeholder="Password" 
+                type="password"
+                id="password"
+                name="password"
+                class="form-control"
+                placeholder="Password"
                 required
-                [(ngModel)]="password">
+                [(ngModel)]="password"
+              />
             </div>
 
             <p *ngIf="errorMessage.length > 0" class="text-danger">
-              {{errorMessage}}</p>
+              {{ errorMessage }}
+            </p>
 
             <p *ngIf="error.message.length > 0" class="text-danger">
-              {{error.message}}</p>
+              {{ error.message }}
+            </p>
 
-            <button 
+            <button
               type="submit"
-              class="btn btn-lg btn-primary btn-block text-uppercase" 
-              (click)="authService.loginWithEmail(email, password)">
+              class="btn btn-lg btn-primary btn-block text-uppercase"
+              (click)="authService.loginWithEmail(email, password)"
+            >
               Sign in
             </button>
 
-            <button class="btn btn-link" 
-              (click)="authService.sendPasswordResetEmail(email)">
+            <button
+              class="btn btn-link"
+              (click)="authService.sendPasswordResetEmail(email)"
+            >
               Forgot Password?
             </button>
-      
-            <button class="btn btn-lg btn-primary btn-block text-uppercase"
-              (click)="authService.signUpWithEmail(email, password)">
+
+            <button
+              class="btn btn-lg btn-primary btn-block text-uppercase"
+              [routerLink]="['/signUp']"
+            >
               Sign Up
             </button>
-            <hr class="my-4">
-            <button class="btn btn-lg btn-google btn-block text-uppercase" (click)="authService.loginWithGoogle()"><i
-                class="fab fa-google mr-2"></i> Sign in with Google</button>
-            <button class="btn btn-lg btn-facebook btn-block text-uppercase"
-              (click)="authService.loginWithFacebook()"><i class="fab fa-facebook-f mr-2"></i> Sign in with
-              Facebook</button>
+            <hr class="my-4" />
+            <button
+              class="btn btn-lg btn-google btn-block text-uppercase"
+              (click)="authService.loginWithGoogle()"
+            >
+              <i class="fab fa-google mr-2"></i> Sign in with Google
+            </button>
+            <button
+              class="btn btn-lg btn-facebook btn-block text-uppercase"
+              (click)="authService.loginWithFacebook()"
+            >
+              <i class="fab fa-facebook-f mr-2"></i> Sign in with Facebook
+            </button>
           </form>
         </div>
       </div>
