@@ -35,11 +35,15 @@ export class AppComponent {
     private router: Router,
     private translate: TranslateService
   ) {
-    this.medicineRef = db.list('/medicines');
-    this.cartRef = db.list(`carts/${this.authService.userId}`);
-    this.userRef = db.list('/users');
+    this.initItems();
+  }
+
+  initItems() {
+    this.medicineRef = this.db.list('/medicines');
+    this.cartRef = this.db.list(`carts/${this.authService.userId}`);
+    this.userRef = this.db.list('/users');
     this.loadMembers(false);
-    translate.setDefaultLang('en');
+    this.translate.setDefaultLang('en');
   }
 
   uploadFile(event, filePath) {

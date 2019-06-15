@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from "../services/auth.service";
+import { AuthService } from '../services/auth.service';
 
-import { AppComponent } from "../app.component";
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-shopping',
@@ -9,16 +9,11 @@ import { AppComponent } from "../app.component";
   styleUrls: ['./shopping.component.scss']
 })
 export class ShoppingComponent implements OnInit {
-  
-
-  constructor(
-    public app: AppComponent,
-    public authService: AuthService) { 
-      authService.showX = true;
+  constructor(public app: AppComponent, public authService: AuthService) {
+    authService.showX = true;
   }
 
   ngOnInit() {
+    this.app.initItems();
   }
-
-
 }

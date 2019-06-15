@@ -28,6 +28,12 @@ export class AuthService {
         localStorage.setItem('user', null);
       }
     });
+
+    if (this.userId === 'teeitjhvuHhfGUzYjNYxxYb6mGf2') {
+      this.admin = true;
+    } else {
+      this.admin = false;
+    }
   }
 
   goToMedicines() {
@@ -68,7 +74,6 @@ export class AuthService {
     return this.afAuth.auth
       .createUserWithEmailAndPassword(userData.email, userData.password)
       .then(user => {
-        console.log('u', user);
         this.authState = user;
         this.userId = user.user.uid;
         this.sendEmailVerification();

@@ -27,8 +27,6 @@ export class SignupComponent implements OnInit {
   signup(userForm) {
     this.clearErrorMessage();
 
-    console.log(userForm.value);
-
     this.authService
       .signUpWithEmail(userForm.value)
       .then(() => {

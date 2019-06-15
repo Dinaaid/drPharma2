@@ -1,11 +1,18 @@
 <header class="container-fluid">
   <nav class="navbar navbar-expand-lg navbar-dark">
     <a class="navbar-brand d-flex" routerLink="">
-      <img src="assets/logonav.png" alt="logo-pharmacy">
+      <img src="assets/logonav.png" alt="logo-pharmacy" />
       <h2>Pharmacy</h2>
     </a>
-    <button class="navbar-toggler justify-" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button
+      class="navbar-toggler justify-"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -15,7 +22,9 @@
           <a class="nav-link" routerLink="">{{ 'nav.home' | translate }}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" (click)="pharmacyService.triggerScrollTo()">{{ 'nav.Our Services' | translate}}</a>
+          <a class="nav-link" (click)="pharmacyService.triggerScrollTo()">{{
+            'nav.Our Services' | translate
+          }}</a>
         </li>
         <!-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
@@ -26,33 +35,41 @@
             </div>
         </li> -->
         <li class="nav-item">
-          <a class="nav-link" (click)="authService.goToMedicines()">All medicines</a>
+          <a class="nav-link" (click)="authService.goToMedicines()"
+            >All medicines</a
+          >
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="contactus">Contact Us</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="shopping">Shopping
-            <img src="assets/shopping-cart.png" alt="icon-cart">
+          <a class="nav-link" routerLink="shopping"
+            >Shopping
+            <img src="assets/shopping-cart.png" alt="icon-cart" />
           </a>
         </li>
         <li class="nav-items d-flex justify-content-center">
-          <span *ngIf="!authService.authState; then showSignIn else showSignOut"></span>
+          <span
+            *ngIf="!authService.userId; then showSignIn; else showSignOut"
+          ></span>
           <ng-template #showSignIn>
-              <a class="nav-link" (click)="authService.goToSignIn()">Sign In</a>
+            <a
+              class="nav-link"
+              (click)="authService.goToSignIn(); authService.signOut()"
+              >Sign In</a
+            >
           </ng-template>
           <ng-template #showSignOut>
-              <a class="nav-link" (click)="authService.signOut()">Sign Out</a>
+            <a class="nav-link" (click)="authService.signOut()">Sign Out</a>
           </ng-template>
         </li>
       </ul>
       <li class="nav-item  d-flex justify-content-end">
-          <a class="nav-link" (click)="switchLanguage('ar')">Ar</a>
+        <a class="nav-link" (click)="switchLanguage('ar')">Ar</a>
       </li>
       <li class="nav-item  d-flex justify-content-end">
-          <a class="nav-link" (click)="switchLanguage('en')">En</a>
+        <a class="nav-link" (click)="switchLanguage('en')">En</a>
       </li>
-
     </div>
   </nav>
   <!-- <div>
